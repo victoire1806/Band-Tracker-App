@@ -1,9 +1,13 @@
 const router = require('express').Router();
-const { Gallery, Painting } = require('../models');
+//const { Gallery, Painting } = require('../models');
 
 // GET all galleries for homepage
 router.get('/', async (req, res) => {
-  try {
+  res.render('homepage')
+  
+    
+  });
+ /* try {
     const dbGalleryData = await Gallery.findAll({
       include: [
         {
@@ -24,10 +28,11 @@ router.get('/', async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
-});
+  */
+
 
 // GET one gallery
-router.get('/gallery/:id', async (req, res) => {
+/*router.get('/gallery/:id', async (req, res) => {
   try {
     const dbGalleryData = await Gallery.findByPk(req.params.id, {
       include: [
@@ -73,6 +78,6 @@ router.get('/login', (req, res) => {
     return;
   }
   res.render('login');
-});
+});*/
 
 module.exports = router;

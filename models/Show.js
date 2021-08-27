@@ -23,6 +23,10 @@ Show.init(
                 key: 'id',
             },
         },
+        ticketmaster_link: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
     },
     {
         sequelize,

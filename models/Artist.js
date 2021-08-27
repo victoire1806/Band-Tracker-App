@@ -9,6 +9,10 @@ Artist.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        profile_image_link : {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
     },
     {
         sequelize,

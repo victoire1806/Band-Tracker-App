@@ -27,7 +27,7 @@ User.init(
         len: [6],
       },
     },
-    region: {
+    state: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

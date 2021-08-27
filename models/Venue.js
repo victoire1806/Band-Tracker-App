@@ -9,12 +9,16 @@ Venue.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        region: {
+        state: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [2],
             },
+        },
+        city: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
     },
     {

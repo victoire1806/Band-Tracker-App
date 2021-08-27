@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Artist, Show,FavoriteArtist} = require("../models");
+const { User, Artist, Show, FavoriteArtist, Venue} = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", (req, res)=>{
@@ -20,14 +20,14 @@ router.get("/", (req, res)=>{
   });
 });
    //needs the correct handlebars
-router.get("/", withAuth, (req, res) => {
+router.get("/homepage", withAuth, (req, res) => {
     // needs the utils
   res.render("", {
     layout: "home"
   });
 });
-
-router.get("", withAuth, (req, res) => {
+      // needs handlebars
+router.get("/", withAuth, (req, res) => {
   FavoriteArtist.findByPk(req.params.id)
   .then(dbFavoriteArtistData => {
     if(dbFavoriteArtistData){

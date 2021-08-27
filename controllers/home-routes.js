@@ -1,25 +1,24 @@
 const router = require('express').Router();
-const { User, Artist, Show} = require('../models');
+const { User, Artist, Show, FavoriteArtist, Venue} = require('../models');
 const withAuth = require("../utils/auth");
     
  router.get('/', async (req, res) => {
   try {
-    const dbUserData = await User.findAll({
-      include: [
-        {
-          model: Artist,
-          attributes: ['username', 'password'],
-        },
-      ],
-    });
+    // const dbUserData = await User.findAll({
+    //   include: [
+    //     {
+    //       model: Artist,
+    //       attributes: ['username', 'password'],
+    //     },
+    //   ],
+    // });
 
-    const artist = dbUserData.map((artist) =>
-      artist.get({ plain: true })
-    );
+    // const artist = dbUserData.map((artist) =>
+    //   artist.get({ plain: true })
+    // );
 
-    res.render('homepage', {
-      artist,
-    });
+    res.render('homepage'/*
+    }*/);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -37,6 +36,7 @@ router.get('/artist/:id', async (req, res) => {
         {
           model: Artist,
           attributes: [
+            // might need to change these
             'id',
             'upcoming_shows',
             "upcoming_dates", 
@@ -56,7 +56,7 @@ router.get('/artist/:id', async (req, res) => {
 // GET artist
 router.get('/artist/:id', async (req, res) => {
   try {
-    const dbArtistData = await Artist.findByPk(req.params.id);
+    const dbArtistData = await Artist.findAll(req.params.id);
 
     const artist = dbArtistData.get({ plain: true });
 
@@ -75,6 +75,13 @@ router.get('/login', (req, res) => {
   }
   res.render('login');
 });
+
+router.get("/", async (req, res) => {
+                          // API and API key goes here
+  const response = axios.get("");
+  console.log(response.data);
+  res.json(response.data)
+})
 
 module.exports = router;
 

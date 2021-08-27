@@ -1,52 +1,46 @@
-const router = require('express').Router();
-const { User, Artist, Show} = require('../models');
+const router = require("express").Router();
+const { User, Artist, Show } = require("../models");
 const withAuth = require("../utils/auth");
-    
- router.get('/', async (req, res) => {
+
+router.get("/", async (req, res) => {
   try {
-    const dbUserData = await User.findAll({
-      include: [
-        {
-          model: Artist,
-          attributes: ['username', 'password'],
-        },
-      ],
-    });
+    // const dbUserData = await User.findAll({
+    //   include: [
+    //     {
+    //       model: Artist,
+    //       attributes: ['username', 'password'],
+    //     },
+    //   ],
+    // });
 
-    const artist = dbUserData.map((artist) =>
-      artist.get({ plain: true })
-    );
+    // const artist = dbUserData.map((artist) =>
+    //   artist.get({ plain: true })
+    // );
 
-    res.render('homepage', {
+    res.render(
+      "homepage" /*, {
       artist,
-    });
+    }*/
+    );
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-
-
-
-
-router.get('/artist/:id', async (req, res) => {
+router.get("/artist/:id", async (req, res) => {
   try {
     const dbUserData = await Artist.findByPk(req.params.id, {
       include: [
         {
           model: Artist,
-          attributes: [
-            'id',
-            'upcoming_shows',
-            "upcoming_dates", 
-          ],
+          attributes: ["id", "upcoming_shows", "upcoming_dates"],
         },
       ],
     });
 
     const Artist = dbUserData.get({ plain: true });
-    res.render('artist', { user, loggedIn: req.session.loggedIn });
+    res.render("artist", { user, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -54,13 +48,13 @@ router.get('/artist/:id', async (req, res) => {
 });
 
 // GET artist
-router.get('/artist/:id', async (req, res) => {
+router.get("/artist/:id", async (req, res) => {
   try {
     const dbArtistData = await Artist.findByPk(req.params.id);
 
     const artist = dbArtistData.get({ plain: true });
 
-    res.render('artist', { artist, loggedIn: req.session.loggedIn });
+    res.render("artist", { artist, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -68,16 +62,15 @@ router.get('/artist/:id', async (req, res) => {
 });
 
 // Login route
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
-  res.render('login');
+  res.render("login");
 });
 
 module.exports = router;
-
 
 // const router = require('express').Router();
 // const { Index, User } = require('../models');
@@ -92,7 +85,7 @@ module.exports = router;
 //   })
 //   .then(dbShowsData => {
 //     const shows = dbShowsData.map((shows) => shows.get({plain: true}));
-        
+
 //     res.render("homepage", {
 //       shows
 //     });
@@ -104,18 +97,18 @@ module.exports = router;
 // });
 
 // router.get("/", withAuth, (req, res) =>{
- 
+
 //   res.render("favorite-shows", {
 //     layout: "home"
 //   });
 // });
-        
+
 // router.get("//:id", withAuth, (req, res)=>{
 //   artist.findByPK(req.params.id)
 //   .then(dbArtistData => {
 //     if(dbArtistData){
 //       const artist = dbArtistData.get({ plain: true});
-             
+
 //       res.render("artist-page", {
 //         layout: "home",
 //         artist

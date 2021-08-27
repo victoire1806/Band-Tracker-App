@@ -1,70 +1,74 @@
-const router = require('express').Router();
-//const { Gallery, Painting } = require('../models');
+const router = require("express").Router();
+const { User, Artist, Show } = require("../models");
+const withAuth = require("../utils/auth");
 
-// GET all galleries for homepage
-router.get('/', async (req, res) => {
-  res.render('homepage')
-  
-    
-  });
- /* try {
-    const dbGalleryData = await Gallery.findAll({
-      include: [
-        {
-          model: Painting,
-          attributes: ['filename', 'description'],
-        },
-      ],
-    });
-
-    const galleries = dbGalleryData.map((gallery) =>
-      gallery.get({ plain: true })
-    );
-    res.render('homepage', {
-      galleries,
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-  */
-
-
-// GET one gallery
-/*router.get('/gallery/:id', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findByPk(req.params.id, {
-      include: [
-        {
-          model: Painting,
-          attributes: [
-            'id',
-            'title',
-            'artist',
-            'exhibition_date',
-            'filename',
-            'description',
-          ],
-        },
-      ],
-    });
+    // const dbUserData = await User.findAll({
+    //   include: [
+    //     {
+    //       model: Artist,
+    //       attributes: ['username', 'password'],
+    //     },
+    //   ],
+    // });
 
-    const gallery = dbGalleryData.get({ plain: true });
-    res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
+    // const artist = dbUserData.map((artist) =>
+    //   artist.get({ plain: true })
+    // );
+
+    res.render(
+      "homepage" /*, {
+      artist,
+    }*/
+    );
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET one painting
-router.get('/painting/:id', async (req, res) => {
-  try {
-    const dbPaintingData = await Painting.findByPk(req.params.id);
+router.get("/login", (req, res) => {
+  console.log("It works!");
+  res.render("login");
+});
 
-    const painting = dbPaintingData.get({ plain: true });
-    res.render('painting', { painting, loggedIn: req.session.loggedIn });
+router.get("/signup", (req, res) => {
+  console.log("It works!");
+  res.render("signup");
+});
+
+router.get("/favorites", (req, res) => res.render("favorites"));
+
+router.get("/artists", (req, res) => res.render("artists"));
+
+router.get("/artist/:id", async (req, res) => {
+  try {
+    const dbUserData = await Artist.findByPk(req.params.id, {
+      include: [
+        {
+          model: Artist,
+          attributes: ["id", "upcoming_shows", "upcoming_dates"],
+        },
+      ],
+    });
+
+    const Artist = dbUserData.get({ plain: true });
+    res.render("artist", { user, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// GET artist
+router.get("/artist/:id", async (req, res) => {
+  try {
+    const dbArtistData = await Artist.findByPk(req.params.id);
+
+    const artist = dbArtistData.get({ plain: true });
+
+    res.render("artist", { artist, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -72,12 +76,64 @@ router.get('/painting/:id', async (req, res) => {
 });
 
 // Login route
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
-  res.render('login');
-});*/
+  res.render("login");
+});
 
 module.exports = router;
+
+// const router = require('express').Router();
+// const { Index, User } = require('../models');
+// const withAuth = require("../utils/auth")
+
+// // GET all galleries for homepage
+// router.get("/", withAuth, (req, res) => {
+//   this.post.findAll({
+//     where: {
+//       userId: require.session.userId
+//     }
+//   })
+//   .then(dbShowsData => {
+//     const shows = dbShowsData.map((shows) => shows.get({plain: true}));
+
+//     res.render("homepage", {
+//       shows
+//     });
+//   })
+//   .catch(err =>{
+//     console.log(err);
+//     res.redirect("login");
+//   });
+// });
+
+// router.get("/", withAuth, (req, res) =>{
+
+//   res.render("favorite-shows", {
+//     layout: "home"
+//   });
+// });
+
+// router.get("//:id", withAuth, (req, res)=>{
+//   artist.findByPK(req.params.id)
+//   .then(dbArtistData => {
+//     if(dbArtistData){
+//       const artist = dbArtistData.get({ plain: true});
+
+//       res.render("artist-page", {
+//         layout: "home",
+//         artist
+//       });
+//     }else{
+//       res.status(404).render();
+//     }
+//   })
+//   .catch(err =>{
+//     res.status(500).json(err);
+//   })
+// })
+
+// module.exports = router;

@@ -1,3 +1,32 @@
-{{#each galleries as |gallery|}}
-{{> gallery-details}}
-{{/each}}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Band Tracker</title>
+  </head>
+  <body>
+    <p>Hello world!</p>
+
+    <div class="login">
+      {{! <a href="/">Home</a> }}
+      {{#if loggedIn}}
+        <button type="button" class="btn btn-primary">Logout</button>
+      {{else}}
+        <button
+          class="btn btn-primary login-button container"
+          onclick="window.location.href='/login';"
+        >Login</button>
+        <button
+          class="btn btn-primary login-button container"
+          onclick="window.location.href='/signup';"
+        >Signup</button>
+      {{/if}}
+    </div>
+
+    <div>
+      <ul class="artist-list">
+      </ul>
+    </div>
+  </body>
+</html>

@@ -6,41 +6,32 @@
     <title>Museum</title>
     <link rel="stylesheet" type="text/css" href="/css/jass.css" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
   </head>
 
   <body>
     <header>
       <h1>Band Tracker!</h1>
     </header>
-    {{!-- <nav>
-      <a href="/">Home</a>
+    <nav>
+      <a href="/homepage">Homepage</a>
+      <a href="/artists">Artists</a>
+      <a href="/favorites">Favorties</a>
       {{#if loggedIn}}
-        <button id="logout" class="btn-no-style">Logout</button>
+        <a>Signout</a>
+        <a href="/favorites">My Favorites</a>
       {{else}}
         <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+      {{/if}}
+    </nav>
 
-    </nav> --}}
-    <main>
-      <div class="login">
-        {{!-- <a href="/">Home</a> --}}
-        {{#if loggedIn}}
-          <button type="button" class="btn btn-primary">Logout</button>
-        {{else}}
-          <button class="btn btn-primary login-button container" onclick="window.location.href='../login.handlebars';">Login</button>
-          <button class="btn btn-primary login-button container" onclick="window.location.href='../login.handlebars';">Signup</button>
-        {{/if}}
-      </div>
-      {{! <aside>
-        <h2>Enjoy the galleries!</h2>
-      </aside> }}
-      {{!-- <div class="gallery">
-        {{{body}}}
-      </div>
-    </main>
-    {{#if loggedIn}}
-      <script src="/js/logout.js"></script>
-    {{/if}} --}}
+    {{{body}}}
   </body>
 
 </html>

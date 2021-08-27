@@ -28,6 +28,20 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/login", (req, res) => {
+  console.log("It works!");
+  res.render("login");
+});
+
+router.get("/signup", (req, res) => {
+  console.log("It works!");
+  res.render("signup");
+});
+
+router.get("/favorites", (req, res) => res.render("favorites"));
+
+router.get("/artists", (req, res) => res.render("artists"));
+
 router.get("/artist/:id", async (req, res) => {
   try {
     const dbUserData = await Artist.findByPk(req.params.id, {

@@ -1,0 +1,97 @@
+[
+    {
+        "date": "09-24-2021",
+        "artist_id": "2",
+        "venue_id": "1",
+        "ticketmaster_link" : "https://www.ticketmaster.com/j-cole-with-21-savage-the-miami-florida-09-24-2021/event/0D005ACF12F7C1E4"
+    },
+    {
+        "date": "09-25-2021",
+        "artist_id": "2",
+        "venue_id": "2",
+        "ticketmaster_link" : "https://www.ticketmaster.com/j-cole-with-21-savage-the-orlando-florida-09-25-2021/event/22005ACED475AE5B"
+    },
+    {
+        "date": "09-27-2021",
+        "artist_id": "2",
+        "venue_id": "3",
+        "ticketmaster_link": "https://www.ticketmaster.com/j-cole-the-offseason-tour-atlanta-georgia-09-27-2021/event/0E005AD0B8593488"
+    },
+    {
+        "date": "09-28-2021",
+        "artist_id": "2",
+        "venue_id": "4",
+        "ticketmaster_link" : "https://www.ticketmaster.com/j-cole-with-21-savage-the-greensboro-north-carolina-09-28-2021/event/2D005AD0E52F41AC"
+    },
+    {
+        "date": "11-30-2021",
+        "artist_id": "1",
+        "venue_id": "5",
+        "ticketmaster_link" : "https://www.ticketmaster.com/dream-theater-with-special-guest-arch-brooklyn-new-york-11-30-2021/event/30005AF6B8E51B1D"
+    },
+    {
+        "date": "11-29-2021",
+        "artist_id": "1",
+        "venue_id": "6",
+        "ticketmaster_link" : "https://www.ticketmaster.com/dream-theater-with-special-guest-arch-red-bank-new-jersey-11-29-2021/event/1D005AFA767E1033"
+    },
+    {
+        "date": "10-28-2021",
+        "artist_id": "1",
+        "venue_id": "7",
+        "ticketmaster_link" : "https://www.ticketmaster.com/event/Z7r9jZ1AdF9Fw?tmrid=TMR-3217232&routing=y"
+    },
+    {
+        "date": "11-04-2021",
+        "artist_id": "1",
+        "venue_id": "8",
+        "ticketmaster_link" : "https://www.ticketmaster.com/dream-theater-with-special-guest-arch-seattle-washington-11-04-2021/event/0F005AF6BEDA2B4C"
+    },
+    {
+        "date": "09-10-2021",
+        "artist_id": "3",
+        "venue_id": "9",
+        "ticketmaster_link" : "https://concerts.livenation.com/maroon-5-holmdel-new-jersey-09-10-2021/event/02005AC4DEAD5019"
+    },
+    {
+        "date": "09-13-2021",
+        "artist_id": "3",
+        "venue_id": "10",
+        "ticketmaster_link" : "https://concerts.livenation.com/maroon-5-saratoga-springs-new-york-09-13-2021/event/000057619A665380"
+    },
+    {
+        "date": "10-07-2021",
+        "artist_id": "3",
+        "venue_id": "11",
+        "ticketmaster_link" : "https://concerts.livenation.com/maroon-5-mountain-view-california-10-07-2021/event/1C00577AA26A35C9"
+    },
+    {
+        "date": "10-05-2021",
+        "artist_id": "3",
+        "venue_id": "12",
+        "ticketmaster_link" : "https://concerts.livenation.com/maroon-5-chula-vista-california-10-05-2021/event/0A00577B065B5373"
+    }, {
+        "date": "02-17-2022",
+        "artist_id": "4",
+        "venue_id": "13",
+        "ticketmaster_link" : "https://www.ticketmaster.com/john-mayer-sob-rock-tour-2022-albany-new-york-02-17-2022/event/00005AEEC4A453AD"
+    },
+    {
+        "date": "02-21-2022",
+        "artist_id": "4",
+        "venue_id": "14",
+        "ticketmaster_link" : "https://www.ticketmaster.com/john-mayer-sob-rock-tour-2022-new-york-new-york-02-21-2022/event/3B005AEFF7391D66"
+    },
+    {
+        "date": "02-23-2022",
+        "artist_id": "4",
+        "venue_id": "15",
+        "ticketmaster_link" : "https://www.ticketmaster.com/john-mayer-sob-rock-tour-2022-washington-district-of-columbia-02-23-2022/event/15005AE99F112D86"
+    },
+    {
+        "date": "03-04-2022",
+        "artist_id": "4",
+        "venue_id": "16",
+        "ticketmaster_link" : "https://www.ticketmaster.com/john-mayer-sob-rock-tour-2022-boston-massachusetts-03-04-2022/event/01005AEFD5183D19"
+    }
+]

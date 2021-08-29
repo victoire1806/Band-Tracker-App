@@ -5,6 +5,12 @@ class Venue extends Model {}
 
 Venue.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false,
+            primaryKey: true
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -24,6 +30,7 @@ Venue.init(
     {
         sequelize,
         freezeTableName: true,
+        timestamps: false,
         underscored: true,
         modelName: 'venue'
     }

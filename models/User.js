@@ -29,7 +29,7 @@ User.init(
     },
     state: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false, 
       validate: {
         len: [2],
       },

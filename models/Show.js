@@ -5,8 +5,14 @@ class Show extends Model {}
 
 Show.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false,
+            primaryKey: true
+        },
         date: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         artist_id: {
@@ -31,6 +37,7 @@ Show.init(
     {
         sequelize,
         freezeTableName: true,
+        timestamps: false,
         underscored: true,
         modelName: 'show'
     },

@@ -1,0 +1,22 @@
+[
+  {
+    "username": "Nafis",
+    "password": "password",
+    "state": "NY"
+  },
+  {
+    "username": "Duncan",
+    "password": "password",
+    "state": "NJ"
+  },
+  {
+    "username": "Anne",
+    "password": "password",
+    "state": "DC"
+  },
+  {
+    "username": "Logan",
+    "password": "password",
+    "state": "FL"
+  }
+]

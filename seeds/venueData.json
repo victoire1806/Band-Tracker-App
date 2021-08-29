@@ -1,0 +1,84 @@
+[
+    {
+        "name": "FTX Arena",
+        "city": "Miami",
+        "state": "FL"
+    },
+    {
+        "name": "Amway Center",
+        "city": "Orlando",
+        "state": "FL"
+    },
+    {
+        "name": "State Farm Arena",
+        "city": "Atlanta",
+        "state": "GA"
+    },
+    {
+        "name": "Greensboro Coliseum Complex",
+        "city": "Greensboro",
+        "state": "NC"
+    },
+    {
+        "name": "Kings Theatre",
+        "city": "Brooklyn",
+        "state": "NY"
+    },
+    {
+        "name": "Hackensack Meridian Health Theatre at the Count Basie Center",
+        "city": "Red Bank",
+        "state": "NJ"
+    },
+    {
+        "name": "Mesa Arts Center",
+        "city": "Mesa",
+        "state": "AZ"
+    },
+    {
+        "name": "Paramount Theatre",
+        "city": "Seattle",
+        "state": "WA"
+    },
+    {
+        "name": "PNC Bank Arts Center",
+        "city": "Holmdel",
+        "state": "NJ"
+    },
+    {
+        "name": "Saratoga Performing Arts Center",
+        "city": "Saratoga Springs",
+        "state": "NY"
+    },
+    {
+        "name": "Shoreline Amphitheatre",
+        "city": "Mountain View",
+        "state": "CA"
+    },
+    {
+        "name": "North Island Credit Union Amphitheatre",
+        "city": "Chula Vista",
+        "state": "CA"
+    },
+    {
+        "name": "Times Union Center",
+        "city": "Albany",
+        "state": "NY"
+    },
+    {
+        "name": "Madison Square Garden",
+        "city": "New York",
+        "state": "NY"
+    },
+    {
+        "name": "Capital One Arena",
+        "city": "Washington",
+        "state": "DC"
+    },
+    {
+        "name": "TD Garden",
+        "city": "Boston",
+        "state": "MA"
+    }
+]
+        
+ 

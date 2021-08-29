@@ -22,7 +22,7 @@ router.get("/", withAuth, (req, res) =>{
   });
 });
     // needs the handelebars name for shows
-router.get("/", withAuth, (req, res) =>{
+router.get("", withAuth, (req, res) =>{
   res.render("new-show", {
     layout: "home"
   });

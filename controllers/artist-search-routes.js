@@ -20,7 +20,7 @@ router.get("/", (req, res) =>{
   });
 });
 // needs the handelebars name for new artist
-router.get("/", withAuth, (req, res) => {
+router.get("", withAuth, (req, res) => {
   //  needs the .utils
   res.render("" , {
     layout: "home"

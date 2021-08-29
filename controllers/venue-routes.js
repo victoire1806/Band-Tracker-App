@@ -21,7 +21,7 @@ router.get("/", (req, res) =>{
   });
 });
 // needs the handlebars
-router.get("/", withAuth, (req, res) => {
+router.get("", withAuth, (req, res) => {
   // needs utils
   res.render("", {
     layout: "home"

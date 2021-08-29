@@ -18,7 +18,10 @@ const withAuth = require("../utils/auth");
     // );
 
     res.render(
-      "homepage" /*, {
+      "homepage",
+      {
+        logged_in: req.session.logged_in,
+      } /*, {
       artist,
     }*/
     );
@@ -38,9 +41,17 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get("/favorites", (req, res) => res.render("favorites"));
+router.get("/favorites", (req, res) =>
+  res.render("favorites", {
+    logged_in: req.session.logged_in,
+  })
+);
 
-router.get("/artists", (req, res) => res.render("artists"));
+router.get("/artists", (req, res) =>
+  res.render("artists", {
+    logged_in: req.session.logged_in,
+  })
+);
 
 router.get("/artist/:id", async (req, res) => {
   try {
@@ -54,7 +65,7 @@ router.get("/artist/:id", async (req, res) => {
     });
 
     const Artist = dbUserData.get({ plain: true });
-    res.render("artist", { user, loggedIn: req.session.loggedIn });
+    res.render("artist", { user, logged_in: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -68,7 +79,7 @@ router.get("/artist/:id", async (req, res) => {
 
     const artist = dbArtistData.get({ plain: true });
 
-    res.render("artist", { artist, loggedIn: req.session.loggedIn });
+    res.render("artist", { artist, logged_in: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -77,7 +88,7 @@ router.get("/artist/:id", async (req, res) => {
 
 // Login route
 router.get("/login", (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect("/");
     return;
   }

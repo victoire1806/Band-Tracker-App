@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Artist, Show} = require("../models");
+const { User, Artist, Show, FavoriteArtist, Venue} = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", (req, res) =>{
@@ -20,7 +20,7 @@ router.get("/", (req, res) =>{
   });
 });
 // needs the handelebars name for new artist
-router.get("/", withAuth, (req, res) => {
+router.get("", withAuth, (req, res) => {
   //  needs the .utils
   res.render("" , {
     layout: "home"
@@ -28,7 +28,7 @@ router.get("/", withAuth, (req, res) => {
 });
       // needs handlebars for the add favorite
 router.get("" ,withAuth, (req, res) =>{
-  Artist.findByPk(req.params.id)
+  Artist.findAll(req.params.id)
   .then(dbArtistData => {
     if (dbArtistData){
       const artist = dbArtistData.get({ plain: true});

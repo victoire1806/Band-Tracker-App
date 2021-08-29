@@ -25,9 +25,9 @@
     <nav>
       <a href="/">Homepage</a>
       <a href="/artists">Artists</a>
-      <a href="/favorites">Favorties</a>
-      {{#if loggedIn}}
-        <a>Signout</a>
+      {{! <a href="/favorites">Favorties</a> }}
+      {{#if logged_in}}
+        <a id="logout" href="">Signout</a>
         <a href="/favorites">My Favorites</a>
       {{else}}
         <a href="/login">Login</a>
@@ -38,4 +38,5 @@
     {{{body}}}
   </body>
 
+  <script src="../js/logout.js"></script>
 </html>

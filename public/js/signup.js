@@ -21,9 +21,9 @@ const signupFormHandler = async (event) => {
   }
 };
 
-$(function () {
-  $("#state-signup").selectmenu();
-});
+// $(function () {
+//   $("#state-signup").selectmenu();
+// });
 
 document
   .querySelector(".signup-form")

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Artist, Venue, Show } = require('../../models');
-const { get } = require('./user-routes');
+
 
 router.get('/artists', async (req, res) => {
     try {

@@ -101,59 +101,7 @@ router.get("/", async (req, res) => {
   res.json(response.data);
 });
 
-module.exports = router;
 
-// const router = require('express').Router();
-// const { Index, User } = require('../models');
-// const withAuth = require("../utils/auth")
-
-// // GET all galleries for homepage
-// router.get("/", withAuth, (req, res) => {
-//   this.post.findAll({
-//     where: {
-//       userId: require.session.userId
-//     }
-//   })
-//   .then(dbShowsData => {
-//     const shows = dbShowsData.map((shows) => shows.get({plain: true}));
-
-//     res.render("homepage", {
-//       shows
-//     });
-//   })
-//   .catch(err =>{
-//     console.log(err);
-//     res.redirect("login");
-//   });
-// });
-
-// router.get("/", withAuth, (req, res) =>{
-
-//   res.render("favorite-shows", {
-//     layout: "home"
-//   });
-// });
-
-// router.get("//:id", withAuth, (req, res)=>{
-//   artist.findByPK(req.params.id)
-//   .then(dbArtistData => {
-//     if(dbArtistData){
-//       const artist = dbArtistData.get({ plain: true});
-
-//       res.render("artist-page", {
-//         layout: "home",
-//         artist
-//       });
-//     }else{
-//       res.status(404).render();
-//     }
-//   })
-//   .catch(err =>{
-//     res.status(500).json(err);
-//   })
-// })
-
-// module.exports = router;
 
 router.get("/favorites", async (req, res) => {
   try {
@@ -162,17 +110,60 @@ router.get("/favorites", async (req, res) => {
         {
           model: Artist,
           through: FavoriteArtist,
+          include: [
+            {
+              model: Venue,
+              through: Show
+            }
+          ]
         },
       ],
-    });
+    },
+   );
     // console.log(req.session.user_id);
-
+    // res.json(favoritesData)
     const favorites = favoritesData.artists.map((item) =>
       item.get({ plain: true })
     );
     console.log(`Expecting Favorites Values ${favoritesData}`);
-    res.status(200).render("favorites", { favorites }); //,{favorites: ['What', 'Do'], logged_in: req.session.logged_in}
+    res.status(200).render("favorites", { favorites }); 
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+// router.get("/favorites", async (req, res) => {
+//   try {
+//     const favoritesData = await User.findByPk(req.body.user_id, {
+//       include: [
+//         {
+//           model: Artist,
+//           through: FavoriteArtist,
+//           include: [
+//             {
+//               model: Venue,
+//               through: Show
+//             }
+//           ]
+//         },
+//       ],
+//     },
+//     {
+//       where: {
+//         id: req.body.user_id
+//       }
+//     });
+//     // console.log(req.session.user_id);
+//     res.json(favoritesData)
+//     const favorites = favoritesData.artists.map((item) =>
+//       item.get({ plain: true })
+//     );
+//     console.log(`Expecting Favorites Values ${favoritesData}`);
+//     res.status(200).render("favorites", { favorites }); 
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+
+module.exports = router;

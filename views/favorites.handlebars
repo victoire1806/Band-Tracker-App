@@ -11,6 +11,25 @@
 
   {{#each favorites as |favorite|}}
     <h1>{{favorite.name}}</h1>
+    <div>
+        <img src='{{favorite.profile_image_link}}'>
+        <div>
+           {{#each favorite.venues as |venue|}}
+               <a href='{{venue.show.ticketmaster_link}}'>
+                 <div>
+                   <h2>{{venue.name}}</h2>
+                   <h3>{{venue.city}}, {{venue.state}}</h3>
+                 </div>
+                 <div>
+                   <h2>{{venue.show.date}}</h2>
+                 </div>
+               </a>
+            {{/each}}
+        </div>
+
+    </div>
+   
+   
   {{/each}}
 
 </div>

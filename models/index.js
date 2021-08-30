@@ -8,7 +8,7 @@ User.belongsToMany(Artist, {
   through: {
     model: FavoriteArtist,
     foreignKey: "user_id",
-    unique: false,
+    // unique: false,
   }
 });
 
@@ -16,7 +16,7 @@ Artist.belongsToMany(User, {
   through: {
     model: FavoriteArtist,
     foreignKey: "artist_id",
-    unique: false,
+    // unique: false,
   }
 });
 

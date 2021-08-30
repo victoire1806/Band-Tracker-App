@@ -1,6 +1,10 @@
 <div class="favorite-list-container">
   <h1>My Favorites!</h1>
   <ul class="favorites-list">
+     </ul>
 
-  </ul>
+{{#each favorites as |favorite|}}
+<h1>{{favorite.name}}</h1>
+{{/each}}
+ 
 </div>

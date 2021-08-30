@@ -41,11 +41,11 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get("/favorites", (req, res) =>
-  res.render("favorites", {
-    logged_in: req.session.logged_in,
-  })
-);
+// router.get("/favorites", (req, res) =>
+//   res.render("favorites", {
+//     logged_in: req.session.logged_in,
+//   })
+// );
 
 router.get("/artists", (req, res) =>
   res.render("artists", {
@@ -155,3 +155,22 @@ module.exports = router;
 // })
 
 // module.exports = router;
+
+
+router.get("/favorites", async (req, res) => {
+  try {
+    const favoritesData = await User.findByPk(1,{
+        include: [{
+            model: Artist,
+            through: FavoriteArtist,
+          }]
+      })
+    // console.log(req.session.user_id);
+
+    const favorites = favoritesData.artists.map((item) => item.get({ plain: true }))
+    console.log(`Expecting Favorites Values ${favoritesData}`)
+    res.status(200).render('favorites', {favorites}) //,{favorites: ['What', 'Do'], logged_in: req.session.logged_in}
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})

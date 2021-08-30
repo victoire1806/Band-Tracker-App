@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { User, Artist, Show, FavoriteArtist, Venue} = require('../models');
+const router = require("express").Router();
+const { User, Artist, Show, FavoriteArtist, Venue } = require("../models");
 const withAuth = require("../utils/auth");
-    
- router.get('/', async (req, res) => {
+
+router.get("/", async (req, res) => {
   try {
     // const dbUserData = await User.findAll({
     //   include: [
@@ -53,38 +53,37 @@ router.get("/artists", (req, res) =>
   })
 );
 
-router.get("/artist/:id", async (req, res) => {
+router.get("/artists/:artistName", async (req, res) => {
   try {
-    const dbUserData = await Artist.findByPk(req.params.id, {
-      include: [
-        {
-          model: Artist,
-          attributes: ["id", "upcoming_shows", "upcoming_dates"],
-        },
-      ],
+    const formattedArtistName = req.params.artistName.replace("_", " ");
+    const dbUserData = await Artist.findOne({
+      where: {
+        name: formattedArtistName,
+      },
     });
 
-    const Artist = dbUserData.get({ plain: true });
-    res.render("artist", { user, logged_in: req.session.loggedIn });
+    const artist = dbUserData.get({ plain: true });
+    console.log("ARTISSSSSSSST", artist);
+    res.render("artists", { artist, logged_in: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET artist
-router.get("/artist/:id", async (req, res) => {
-  try {
-    const dbArtistData = await Artist.findAll(req.params.id);
+// // GET artist
+// router.get("/artist/:id", async (req, res) => {
+//   try {
+//     const dbArtistData = await Artist.findAll(req.params.id);
 
-    const artist = dbArtistData.get({ plain: true });
+//     const artist = dbArtistData.get({ plain: true });
 
-    res.render("artist", { artist, logged_in: req.session.loggedIn });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//     res.render("artist", { artist, logged_in: req.session.loggedIn });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 // Login route
 router.get("/login", (req, res) => {
@@ -96,11 +95,11 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-                          // API and API key goes here
+  // API and API key goes here
   const response = axios.get("");
   console.log(response.data);
-  res.json(response.data)
-})
+  res.json(response.data);
+});
 
 module.exports = router;
 
@@ -156,21 +155,24 @@ module.exports = router;
 
 // module.exports = router;
 
-
 router.get("/favorites", async (req, res) => {
   try {
-    const favoritesData = await User.findByPk(1,{
-        include: [{
-            model: Artist,
-            through: FavoriteArtist,
-          }]
-      })
+    const favoritesData = await User.findByPk(req.session.user_id, {
+      include: [
+        {
+          model: Artist,
+          through: FavoriteArtist,
+        },
+      ],
+    });
     // console.log(req.session.user_id);
 
-    const favorites = favoritesData.artists.map((item) => item.get({ plain: true }))
-    console.log(`Expecting Favorites Values ${favoritesData}`)
-    res.status(200).render('favorites', {favorites}) //,{favorites: ['What', 'Do'], logged_in: req.session.logged_in}
+    const favorites = favoritesData.artists.map((item) =>
+      item.get({ plain: true })
+    );
+    console.log(`Expecting Favorites Values ${favoritesData}`);
+    res.status(200).render("favorites", { favorites }); //,{favorites: ['What', 'Do'], logged_in: req.session.logged_in}
   } catch (err) {
     res.status(500).json(err);
   }
-})
+});

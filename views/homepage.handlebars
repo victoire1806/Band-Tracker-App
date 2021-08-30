@@ -23,20 +23,19 @@
         >Signup</button>
       {{/if}}
     </div>
-    <div>
-    </div>
-    <div>
-      <ul class="artist-list">
-      </ul>
-    </div>
-    <label for="artist">Select an Artist</label>
-    <select name="artist" id="artist-list">
-      <option>Opeth</option>
-      <option>Tool</option>
-    </select>
+
+    <label for="artist">Find an Artist</label>
+    <form class="artist-form">
+      <input type="text" id="artist-list" />
+      <button>Submit</button>
+    </form>
+
     <div>
 
     </div>
   </body>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="./js/homepage.js"></script>
 </html>

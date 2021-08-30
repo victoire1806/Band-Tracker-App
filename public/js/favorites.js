@@ -30,18 +30,19 @@ $(function () {
 const searchFormHandler = async (event) => {
   event.preventDefault();
 
-  const artist = document
-    .querySelector("#artist-list")
-    .value.trim()
-    .replace(" ", "_");
+  const artist = document.querySelector("#artist-list").value.trim();
 
   if (artist) {
-    const response = await fetch(`/artists/${artist}`, {
-      method: "GET",
+    const response = await fetch(`/api/artists/add`, {
+      method: "POST",
+      body: JSON.stringify({ artist }),
       headers: { "Content-Type": "application/json" },
     });
+
     if (response.ok) {
-      document.location.replace(`/artists/${artist}`);
+      document.location.replace("/favorites");
+    } else {
+      alert("Failed to add artist.");
     }
   }
 };

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Artist, FavoriteArtist } = require("../../models");
 
 // CREATE new user
 // /api/users
@@ -50,6 +50,7 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.logged_in = true;
+      req.session.user_id = dbUserData.id;
       console.log(
         "🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie",
         req.session.cookie
@@ -66,6 +67,7 @@ router.post("/login", async (req, res) => {
 });
 
 // Logout
+// /api/users/logout
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -75,5 +77,22 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
 });
+
+// Get favorite artists
+// api/users/favorites
+router.get("/favorites", async (req, res) => {
+  try {
+    const favoritesData = await User.findByPk(req.session.user_id,{
+        include: [{
+            model: Artist,
+            through: FavoriteArtist,
+          }]
+      })
+    const favorites = favoritesData.artists.map((item) => item.get({ plain: true }))
+    res.render('favorites',{favorites}); //: ['What?','Huh?']}) //: ['What', 'Do']})
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 module.exports = router;

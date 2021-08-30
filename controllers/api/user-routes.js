@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
 
     req.session.save(() => {
       req.session.logged_in = true;
-
+      req.session.user_id = dbUserData.id;
       res.status(200).json(dbUserData);
     });
   } catch (err) {
@@ -82,17 +82,21 @@ router.post("/logout", (req, res) => {
 // api/users/favorites
 router.get("/favorites", async (req, res) => {
   try {
-    const favoritesData = await User.findByPk(req.session.user_id,{
-        include: [{
-            model: Artist,
-            through: FavoriteArtist,
-          }]
-      })
-    const favorites = favoritesData.artists.map((item) => item.get({ plain: true }))
-    res.render('favorites',{favorites}); //: ['What?','Huh?']}) //: ['What', 'Do']})
+    const favoritesData = await User.findByPk(req.session.user_id, {
+      include: [
+        {
+          model: Artist,
+          through: FavoriteArtist,
+        },
+      ],
+    });
+    const favorites = favoritesData.artists.map((item) =>
+      item.get({ plain: true })
+    );
+    res.render("favorites", { favorites }); //: ['What?','Huh?']}) //: ['What', 'Do']})
   } catch (err) {
     res.status(500).json(err);
   }
-})
+});
 
 module.exports = router;

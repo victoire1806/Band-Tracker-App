@@ -36,6 +36,7 @@ Venue.belongsToMany(Artist, {
   }
 });
 
+
 // User.hasMany(FavoriteArtist, {
 //   foreignKey: 'user_id',
 //   onDelete: 'CASCADE',
